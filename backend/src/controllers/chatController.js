@@ -1,4 +1,4 @@
-const { chat } = require('../services/gemini');
+const { chat } = require("../services/gemini");
 
 /**
  * POST /api/chat
@@ -7,8 +7,8 @@ const { chat } = require('../services/gemini');
 async function handleChat(req, res, next) {
   try {
     const { message } = req.body;
-    if (!message || typeof message !== 'string' || !message.trim()) {
-      return res.status(400).json({ error: 'message is required' });
+    if (!message || typeof message !== "string" || !message.trim()) {
+      return res.status(400).json({ error: "message is required" });
     }
     const reply = await chat(message.trim());
     res.json({ reply });

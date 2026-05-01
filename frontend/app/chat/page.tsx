@@ -18,7 +18,8 @@ export default function ChatPage() {
     {
       id: "1",
       role: "assistant",
-      content: "Hello! I'm ElectionGuide AI. Ask me anything about the voting process, eligibility, or how elections work.",
+      content:
+        "Hello! I'm ElectionGuide AI. Ask me anything about the voting process, eligibility, or how elections work.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -28,7 +29,11 @@ export default function ChatPage() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { id: Date.now().toString(), role: "user", content: input };
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
@@ -39,13 +44,17 @@ export default function ChatPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage.content }),
       });
-      
+
       const data = await res.json();
-      
+
       if (data.reply) {
         setMessages((prev) => [
           ...prev,
-          { id: (Date.now() + 1).toString(), role: "assistant", content: data.reply },
+          {
+            id: (Date.now() + 1).toString(),
+            role: "assistant",
+            content: data.reply,
+          },
         ]);
       } else {
         throw new Error(data.error || "Failed to get response");
@@ -54,7 +63,12 @@ export default function ChatPage() {
       console.error(error);
       setMessages((prev) => [
         ...prev,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "Sorry, I'm having trouble connecting right now. Please try again later." },
+        {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content:
+            "Sorry, I'm having trouble connecting right now. Please try again later.",
+        },
       ]);
     } finally {
       setIsLoading(false);
@@ -65,7 +79,9 @@ export default function ChatPage() {
     <div className="container max-w-4xl mx-auto py-8 px-4 h-[calc(100vh-4rem)] flex flex-col">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground">AI Assistant</h1>
-        <p className="text-muted-foreground">Ask questions in plain English about any election topic.</p>
+        <p className="text-muted-foreground">
+          Ask questions in plain English about any election topic.
+        </p>
       </div>
 
       <Card className="flex-1 flex flex-col overflow-hidden border-border/50 shadow-sm bg-card/50">
@@ -82,7 +98,7 @@ export default function ChatPage() {
                   <Bot className="h-4 w-4 text-primary" />
                 </div>
               )}
-              
+
               <div
                 className={`px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-wrap ${
                   msg.role === "user"
@@ -100,15 +116,21 @@ export default function ChatPage() {
               )}
             </motion.div>
           ))}
-          
+
           {isLoading && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex gap-4"
+            >
               <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
                 <Bot className="h-4 w-4 text-primary" />
               </div>
               <div className="px-4 py-3 rounded-2xl bg-muted text-foreground rounded-tl-sm flex items-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Thinking...</span>
+                <span className="text-sm text-muted-foreground">
+                  Thinking...
+                </span>
               </div>
             </motion.div>
           )}
@@ -123,9 +145,9 @@ export default function ChatPage() {
               className="flex-1 bg-muted/50 border-border/50 focus-visible:ring-primary h-12 rounded-full px-6"
               disabled={isLoading}
             />
-            <Button 
-              type="submit" 
-              disabled={isLoading || !input.trim()} 
+            <Button
+              type="submit"
+              disabled={isLoading || !input.trim()}
               className="h-12 w-12 rounded-full shrink-0 bg-primary hover:bg-primary/90"
             >
               <Send className="h-5 w-5" />

@@ -1,4 +1,4 @@
-const { getFirestore } = require('../services/firestore');
+const { getFirestore } = require("../services/firestore");
 
 /**
  * GET /api/timeline
@@ -8,8 +8,8 @@ async function getTimeline(req, res, next) {
   try {
     const db = getFirestore();
     const snapshot = await db
-      .collection('timeline')
-      .orderBy('date', 'asc')
+      .collection("timeline")
+      .orderBy("date", "asc")
       .get();
 
     const events = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));

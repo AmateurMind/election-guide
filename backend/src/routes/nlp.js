@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const { handleNlpQuery } = require('../controllers/nlpController');
+const { Router } = require("express");
+const { handleNlpQuery } = require("../controllers/nlpController");
 const router = Router();
-router.post('/', handleNlpQuery);
+router.post("/", handleNlpQuery);
 module.exports = router;

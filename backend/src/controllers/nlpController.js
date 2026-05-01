@@ -1,7 +1,7 @@
-const { LanguageServiceClient } = require('@google-cloud/language');
-const { runQuery } = require('../services/bigquery');
+const { LanguageServiceClient } = require("@google-cloud/language");
+const { runQuery } = require("../services/bigquery");
 
-const DATASET = process.env.BIGQUERY_DATASET || 'election_data';
+const DATASET = process.env.BIGQUERY_DATASET || "election_data";
 
 let nlpClient;
 function getNlpClient() {
@@ -20,7 +20,7 @@ function getNlpClient() {
 function mapToQuery(text, entities) {
   const lower = text.toLowerCase();
 
-  if (lower.includes('highest turnout') || lower.includes('best region')) {
+  if (lower.includes("highest turnout") || lower.includes("best region")) {
     return `
       SELECT region, ROUND(AVG(turnout_pct), 2) AS avg_turnout
       FROM \`${DATASET}.voter_turnout\`
@@ -30,7 +30,7 @@ function mapToQuery(text, entities) {
     `;
   }
 
-  if (lower.includes('lowest turnout') || lower.includes('worst region')) {
+  if (lower.includes("lowest turnout") || lower.includes("worst region")) {
     return `
       SELECT region, ROUND(AVG(turnout_pct), 2) AS avg_turnout
       FROM \`${DATASET}.voter_turnout\`
@@ -40,7 +40,7 @@ function mapToQuery(text, entities) {
     `;
   }
 
-  if (lower.includes('trend') || lower.includes('over the years')) {
+  if (lower.includes("trend") || lower.includes("over the years")) {
     return `
       SELECT year, ROUND(AVG(turnout_pct), 2) AS avg_turnout
       FROM \`${DATASET}.voter_turnout\`
@@ -50,7 +50,7 @@ function mapToQuery(text, entities) {
   }
 
   // Check if a specific region was mentioned
-  const regionEntity = entities.find((e) => e.type === 'LOCATION');
+  const regionEntity = entities.find((e) => e.type === "LOCATION");
   if (regionEntity) {
     return `
       SELECT year, region, turnout_pct
@@ -70,13 +70,13 @@ function mapToQuery(text, entities) {
 async function handleNlpQuery(req, res, next) {
   try {
     const { query } = req.body;
-    if (!query || typeof query !== 'string' || !query.trim()) {
-      return res.status(400).json({ error: 'query is required' });
+    if (!query || typeof query !== "string" || !query.trim()) {
+      return res.status(400).json({ error: "query is required" });
     }
 
     const client = getNlpClient();
     const [result] = await client.analyzeEntities({
-      document: { content: query.trim(), type: 'PLAIN_TEXT' },
+      document: { content: query.trim(), type: "PLAIN_TEXT" },
     });
 
     const entities = result.entities.map((e) => ({
@@ -89,7 +89,7 @@ async function handleNlpQuery(req, res, next) {
 
     if (!sql) {
       return res.json({
-        message: 'Query understood but no matching analytics pattern found.',
+        message: "Query understood but no matching analytics pattern found.",
         entities,
         data: [],
       });

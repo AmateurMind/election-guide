@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-brand-gold: #8A7650;
-  --color-brand-sage: #8E977D;
-  --color-brand-cream: #ECE7D1;
-  --color-brand-sand: #DBCEA5;
+  --color-brand-gold: #8a7650;
+  --color-brand-sage: #8e977d;
+  --color-brand-cream: #ece7d1;
+  --color-brand-sand: #dbcea5;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -53,72 +53,72 @@
 }
 
 :root {
-  --background: #ECE7D1; /* Cream */
-  --foreground: #2A2518; /* Dark brown based on gold */
-  --card: #F5F2E8; /* Lighter cream */
-  --card-foreground: #2A2518;
-  --popover: #F5F2E8;
-  --popover-foreground: #2A2518;
-  --primary: #8A7650; /* Gold */
-  --primary-foreground: #FFFFFF;
-  --secondary: #DBCEA5; /* Sand */
-  --secondary-foreground: #4A3E26;
-  --muted: #E0DEC8;
-  --muted-foreground: #6A604A;
-  --accent: #8E977D; /* Sage */
-  --accent-foreground: #FFFFFF;
-  --destructive: #9C4B4B;
-  --border: #D1C9A8;
-  --input: #D1C9A8;
-  --ring: #8A7650;
-  --chart-1: #8A7650;
-  --chart-2: #8E977D;
-  --chart-3: #DBCEA5;
-  --chart-4: #6E795B;
-  --chart-5: #B09C76;
+  --background: #ece7d1; /* Cream */
+  --foreground: #2a2518; /* Dark brown based on gold */
+  --card: #f5f2e8; /* Lighter cream */
+  --card-foreground: #2a2518;
+  --popover: #f5f2e8;
+  --popover-foreground: #2a2518;
+  --primary: #8a7650; /* Gold */
+  --primary-foreground: #ffffff;
+  --secondary: #dbcea5; /* Sand */
+  --secondary-foreground: #4a3e26;
+  --muted: #e0dec8;
+  --muted-foreground: #6a604a;
+  --accent: #8e977d; /* Sage */
+  --accent-foreground: #ffffff;
+  --destructive: #9c4b4b;
+  --border: #d1c9a8;
+  --input: #d1c9a8;
+  --ring: #8a7650;
+  --chart-1: #8a7650;
+  --chart-2: #8e977d;
+  --chart-3: #dbcea5;
+  --chart-4: #6e795b;
+  --chart-5: #b09c76;
   --radius: 0.625rem;
-  --sidebar: #ECE7D1;
-  --sidebar-foreground: #2A2518;
-  --sidebar-primary: #8A7650;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #DBCEA5;
-  --sidebar-accent-foreground: #2A2518;
-  --sidebar-border: #D1C9A8;
-  --sidebar-ring: #8A7650;
+  --sidebar: #ece7d1;
+  --sidebar-foreground: #2a2518;
+  --sidebar-primary: #8a7650;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dbcea5;
+  --sidebar-accent-foreground: #2a2518;
+  --sidebar-border: #d1c9a8;
+  --sidebar-ring: #8a7650;
 }
 
 .dark {
-  --background: #1C1911;
-  --foreground: #ECE7D1;
-  --card: #2A2518;
-  --card-foreground: #ECE7D1;
-  --popover: #2A2518;
-  --popover-foreground: #ECE7D1;
-  --primary: #8A7650;
-  --primary-foreground: #FFFFFF;
-  --secondary: #4A3E26;
-  --secondary-foreground: #ECE7D1;
-  --muted: #3B3322;
-  --muted-foreground: #A69E8A;
-  --accent: #8E977D;
-  --accent-foreground: #FFFFFF;
-  --destructive: #B25A5A;
-  --border: #3B3322;
-  --input: #3B3322;
-  --ring: #8A7650;
-  --chart-1: #8A7650;
-  --chart-2: #8E977D;
-  --chart-3: #DBCEA5;
-  --chart-4: #6E795B;
-  --chart-5: #B09C76;
-  --sidebar: #1C1911;
-  --sidebar-foreground: #ECE7D1;
-  --sidebar-primary: #8A7650;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #3B3322;
-  --sidebar-accent-foreground: #ECE7D1;
-  --sidebar-border: #3B3322;
-  --sidebar-ring: #8A7650;
+  --background: #1c1911;
+  --foreground: #ece7d1;
+  --card: #2a2518;
+  --card-foreground: #ece7d1;
+  --popover: #2a2518;
+  --popover-foreground: #ece7d1;
+  --primary: #8a7650;
+  --primary-foreground: #ffffff;
+  --secondary: #4a3e26;
+  --secondary-foreground: #ece7d1;
+  --muted: #3b3322;
+  --muted-foreground: #a69e8a;
+  --accent: #8e977d;
+  --accent-foreground: #ffffff;
+  --destructive: #b25a5a;
+  --border: #3b3322;
+  --input: #3b3322;
+  --ring: #8a7650;
+  --chart-1: #8a7650;
+  --chart-2: #8e977d;
+  --chart-3: #dbcea5;
+  --chart-4: #6e795b;
+  --chart-5: #b09c76;
+  --sidebar: #1c1911;
+  --sidebar-foreground: #ece7d1;
+  --sidebar-primary: #8a7650;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #3b3322;
+  --sidebar-accent-foreground: #ece7d1;
+  --sidebar-border: #3b3322;
+  --sidebar-ring: #8a7650;
 }
 
 @layer base {

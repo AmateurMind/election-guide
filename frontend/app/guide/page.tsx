@@ -23,7 +23,7 @@ export default function GuidePage() {
       try {
         const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/api/guide`);
         if (search) url.searchParams.append("search", search);
-        
+
         const res = await fetch(url.toString());
         const data = await res.json();
         setSteps(data.steps || []);
@@ -42,16 +42,20 @@ export default function GuidePage() {
     <div className="container max-w-5xl mx-auto py-12 px-4">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Voting Guide</h1>
-          <p className="text-xl text-muted-foreground">Step-by-step instructions to ensure your voice is heard.</p>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Voting Guide
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Step-by-step instructions to ensure your voice is heard.
+          </p>
         </div>
-        
+
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input 
+          <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search guide..." 
+            placeholder="Search guide..."
             className="pl-10 h-12 bg-card border-border rounded-full"
           />
         </div>
@@ -60,7 +64,10 @@ export default function GuidePage() {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="h-48 bg-card/50 animate-pulse rounded-2xl border border-border" />
+            <div
+              key={n}
+              className="h-48 bg-card/50 animate-pulse rounded-2xl border border-border"
+            />
           ))}
         </div>
       ) : steps.length === 0 ? (
@@ -81,22 +88,26 @@ export default function GuidePage() {
               <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
                 <span className="text-9xl font-black">{step.step}</span>
               </div>
-              
+
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground font-bold shrink-0">
                     {step.step}
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-foreground">
+                    {step.title}
+                  </h3>
                 </div>
-                
+
                 <p className="text-muted-foreground mb-6 min-h-[3rem]">
                   {step.description}
                 </p>
-                
+
                 <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex gap-3">
                   <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
-                  <p className="text-sm text-accent-foreground/90 font-medium">{step.tip}</p>
+                  <p className="text-sm text-accent-foreground/90 font-medium">
+                    {step.tip}
+                  </p>
                 </div>
               </div>
             </motion.div>

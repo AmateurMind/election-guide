@@ -1,9 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { 
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  LineChart, Line, Legend
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  Legend,
 } from "recharts";
 import { Search, Loader2, Database } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -26,7 +34,7 @@ export default function AnalyticsPage() {
   const [trends, setTrends] = useState<TurnoutTrend[]>([]);
   const [regions, setRegions] = useState<RegionData[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // NLP Query State
   const [query, setQuery] = useState("");
   const [nlpLoading, setNlpLoading] = useState(false);
@@ -35,8 +43,8 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setTrends(data.turnoutTrends || []);
         setRegions(data.regionData || []);
         setLoading(false);
@@ -53,13 +61,16 @@ export default function AnalyticsPage() {
     setNlpMessage(null);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/nlp-query`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/nlp-query`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query }),
+        },
+      );
       const data = await res.json();
-      
+
       if (data.message) {
         setNlpMessage(data.message);
       } else {
@@ -85,8 +96,12 @@ export default function AnalyticsPage() {
   return (
     <div className="container max-w-6xl mx-auto py-12 px-4 space-y-12">
       <div className="text-center max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold text-foreground mb-4">Election Analytics</h1>
-        <p className="text-xl text-muted-foreground">Powered by BigQuery and Google Cloud Machine Learning.</p>
+        <h1 className="text-4xl font-bold text-foreground mb-4">
+          Election Analytics
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Powered by BigQuery and Google Cloud Machine Learning.
+        </p>
       </div>
 
       {/* NLP Search Bar */}
@@ -94,21 +109,29 @@ export default function AnalyticsPage() {
         <form onSubmit={handleNlpQuery} className="flex gap-4 items-center">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input 
+            <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Ask data in plain English (e.g. 'Which region has highest turnout?')"
               className="pl-12 h-14 text-lg bg-background border-border rounded-full"
             />
           </div>
-          <Button type="submit" disabled={nlpLoading} className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-lg">
-            {nlpLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Analyze"}
+          <Button
+            type="submit"
+            disabled={nlpLoading}
+            className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-lg"
+          >
+            {nlpLoading ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              "Analyze"
+            )}
           </Button>
         </form>
 
         {/* NLP Results */}
         {(nlpResult || nlpMessage) && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             className="mt-6 p-6 bg-muted/50 rounded-2xl border border-border"
@@ -124,13 +147,27 @@ export default function AnalyticsPage() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="border-b border-border text-muted-foreground">
-                      {Object.keys(nlpResult[0]).map(k => <th key={k} className="pb-3 pr-6 font-medium capitalize">{k.replace('_', ' ')}</th>)}
+                      {Object.keys(nlpResult[0]).map((k) => (
+                        <th
+                          key={k}
+                          className="pb-3 pr-6 font-medium capitalize"
+                        >
+                          {k.replace("_", " ")}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
                     {nlpResult.map((row, i) => (
-                      <tr key={i} className="border-b border-border/50 last:border-0">
-                        {Object.values(row).map((val: any, j) => <td key={j} className="py-3 pr-6 text-foreground">{val}</td>)}
+                      <tr
+                        key={i}
+                        className="border-b border-border/50 last:border-0"
+                      >
+                        {Object.values(row).map((val: any, j) => (
+                          <td key={j} className="py-3 pr-6 text-foreground">
+                            {val}
+                          </td>
+                        ))}
                       </tr>
                     ))}
                   </tbody>
@@ -146,37 +183,85 @@ export default function AnalyticsPage() {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <Card className="p-6 bg-card border-border shadow-sm">
-          <h3 className="text-xl font-bold mb-6 text-foreground">National Turnout Trend (2000-2024)</h3>
+          <h3 className="text-xl font-bold mb-6 text-foreground">
+            National Turnout Trend (2000-2024)
+          </h3>
           <div className="h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trends}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#D1C9A8" opacity={0.3} vertical={false} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="#D1C9A8"
+                  opacity={0.3}
+                  vertical={false}
+                />
                 <XAxis dataKey="year" stroke="#6A604A" />
-                <YAxis domain={['auto', 'auto']} stroke="#6A604A" unit="%" />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#2A2518', border: 'none', borderRadius: '8px', color: '#ECE7D1' }}
-                  itemStyle={{ color: '#ECE7D1' }}
+                <YAxis domain={["auto", "auto"]} stroke="#6A604A" unit="%" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#2A2518",
+                    border: "none",
+                    borderRadius: "8px",
+                    color: "#ECE7D1",
+                  }}
+                  itemStyle={{ color: "#ECE7D1" }}
                 />
                 <Legend />
-                <Line type="monotone" name="Avg Turnout" dataKey="avg_turnout" stroke="#8A7650" strokeWidth={4} dot={{ r: 6, fill: "#8A7650" }} activeDot={{ r: 8 }} />
+                <Line
+                  type="monotone"
+                  name="Avg Turnout"
+                  dataKey="avg_turnout"
+                  stroke="#8A7650"
+                  strokeWidth={4}
+                  dot={{ r: 6, fill: "#8A7650" }}
+                  activeDot={{ r: 8 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </Card>
 
         <Card className="p-6 bg-card border-border shadow-sm">
-          <h3 className="text-xl font-bold mb-6 text-foreground">Turnout by Region (Average)</h3>
+          <h3 className="text-xl font-bold mb-6 text-foreground">
+            Turnout by Region (Average)
+          </h3>
           <div className="h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={regions} layout="vertical" margin={{ left: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#D1C9A8" opacity={0.3} horizontal={false} />
-                <XAxis type="number" stroke="#6A604A" unit="%" domain={[0, 100]} />
-                <YAxis dataKey="region" type="category" stroke="#6A604A" width={80} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#2A2518', border: 'none', borderRadius: '8px', color: '#ECE7D1' }}
-                  cursor={{ fill: '#8A7650', opacity: 0.1 }}
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="#D1C9A8"
+                  opacity={0.3}
+                  horizontal={false}
                 />
-                <Bar dataKey="avg_turnout" name="Avg Turnout" fill="#8E977D" radius={[0, 4, 4, 0]} barSize={32} />
+                <XAxis
+                  type="number"
+                  stroke="#6A604A"
+                  unit="%"
+                  domain={[0, 100]}
+                />
+                <YAxis
+                  dataKey="region"
+                  type="category"
+                  stroke="#6A604A"
+                  width={80}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#2A2518",
+                    border: "none",
+                    borderRadius: "8px",
+                    color: "#ECE7D1",
+                  }}
+                  cursor={{ fill: "#8A7650", opacity: 0.1 }}
+                />
+                <Bar
+                  dataKey="avg_turnout"
+                  name="Avg Turnout"
+                  fill="#8E977D"
+                  radius={[0, 4, 4, 0]}
+                  barSize={32}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>

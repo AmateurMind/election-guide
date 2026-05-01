@@ -1,5 +1,5 @@
-const admin = require('firebase-admin');
-const path = require('path');
+const admin = require("firebase-admin");
+const path = require("path");
 
 let db;
 
@@ -8,7 +8,7 @@ function getFirestore() {
     if (!admin.apps.length) {
       admin.initializeApp({
         credential: admin.credential.cert(
-          path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS)
+          path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS),
         ),
       });
     }

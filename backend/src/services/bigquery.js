@@ -1,4 +1,4 @@
-const { BigQuery } = require('@google-cloud/bigquery');
+const { BigQuery } = require("@google-cloud/bigquery");
 
 let client;
 
@@ -20,7 +20,7 @@ function getBigQuery() {
  */
 async function runQuery(query, params = []) {
   const bq = getBigQuery();
-  const [rows] = await bq.query({ query, params, location: 'US' });
+  const [rows] = await bq.query({ query, params, location: "US" });
   return rows;
 }
 

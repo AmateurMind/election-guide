@@ -1,11 +1,11 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 let genAI;
 
 function getGenerativeAI() {
   if (!genAI) {
     if (!process.env.GEMINI_API_KEY) {
-      throw new Error('GEMINI_API_KEY is not set in environment variables.');
+      throw new Error("GEMINI_API_KEY is not set in environment variables.");
     }
     genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   }
@@ -19,7 +19,7 @@ function getGenerativeAI() {
  */
 async function chat(userMessage) {
   const ai = getGenerativeAI();
-  const model = ai.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const systemPrompt = `You are ElectionGuide AI, an expert assistant that helps citizens
 understand the election process, voting rights, how to register, key election dates, and

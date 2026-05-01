@@ -57,8 +57,12 @@ export default function TimelinePage() {
   return (
     <div className="container max-w-4xl mx-auto py-12 px-4">
       <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-foreground mb-4">Election Timeline</h1>
-        <p className="text-xl text-muted-foreground">Key dates and deadlines for the upcoming election cycle.</p>
+        <h1 className="text-4xl font-bold text-foreground mb-4">
+          Election Timeline
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Key dates and deadlines for the upcoming election cycle.
+        </p>
       </div>
 
       <div className="relative border-l-2 border-primary/20 ml-4 md:ml-8 py-8">
@@ -73,16 +77,18 @@ export default function TimelinePage() {
           >
             {/* Timeline Dot */}
             <div className="absolute w-4 h-4 bg-primary rounded-full -left-[9px] top-1.5 shadow-[0_0_0_4px_var(--color-primary-10)] dark:shadow-[0_0_0_4px_rgba(138,118,80,0.2)]" />
-            
+
             <div className="bg-card border border-border shadow-sm p-6 rounded-2xl hover:shadow-md transition-shadow">
               <span className="inline-block px-3 py-1 bg-accent/10 text-accent font-medium text-sm rounded-full mb-3">
                 {new Date(event.date).toLocaleDateString("en-US", {
                   month: "long",
                   day: "numeric",
-                  year: "numeric"
+                  year: "numeric",
                 })}
               </span>
-              <h3 className="text-2xl font-bold text-foreground mb-2">{event.title}</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                {event.title}
+              </h3>
               <p className="text-muted-foreground leading-relaxed">
                 {event.description}
               </p>

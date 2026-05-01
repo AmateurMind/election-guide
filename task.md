@@ -1,5 +1,6 @@
 📄 PRODUCT REQUIREMENTS DOCUMENT (PRD)
 🗳️ ElectionGuide AI – Intelligent Election Education Platform
+
 1. 📌 Product Overview
 
 Goal:
@@ -9,8 +10,7 @@ AI chatbot
 Interactive timelines
 Step-by-step guides
 Data analytics powered by ML
-Natural language query support
-2. 🧠 Tech Stack (MANDATORY)
+Natural language query support 2. 🧠 Tech Stack (MANDATORY)
 Frontend
 Next.js (App Router, TypeScript)
 Tailwind CSS + shadcn/ui
@@ -33,29 +33,29 @@ color palette
 #DBCEA5
 
 3. 🎯 Core Features
-3.1 🤖 AI Chat Assistant
-ChatGPT-style interface
-Endpoint: /api/chat
-Features:
-Answer election-related queries
-Explain processes step-by-step
-Use NLP for intent detection
-3.2 📅 Election Timeline
-Interactive visual timeline
-Data from Firestore
-Animated UI
-3.3 🧾 Voting Guide
-Step-by-step instructions
-Cards UI
-Searchable
-3.4 📊 AI-Powered Analytics Dashboard
-Data Source:
-BigQuery datasets (election data)
-Features:
-Voter turnout trends
-Region-wise participation
-Historical comparisons
-3.5 🧠 Machine Learning (BigQuery ML)
+   3.1 🤖 AI Chat Assistant
+   ChatGPT-style interface
+   Endpoint: /api/chat
+   Features:
+   Answer election-related queries
+   Explain processes step-by-step
+   Use NLP for intent detection
+   3.2 📅 Election Timeline
+   Interactive visual timeline
+   Data from Firestore
+   Animated UI
+   3.3 🧾 Voting Guide
+   Step-by-step instructions
+   Cards UI
+   Searchable
+   3.4 📊 AI-Powered Analytics Dashboard
+   Data Source:
+   BigQuery datasets (election data)
+   Features:
+   Voter turnout trends
+   Region-wise participation
+   Historical comparisons
+   3.5 🧠 Machine Learning (BigQuery ML)
 
 Use BigQuery ML for:
 
@@ -76,55 +76,51 @@ Implementation:
 Use Natural Language API for:
 Entity extraction
 Sentiment analysis
-Map user query → SQL query → BigQuery
-4. 🏗️ Architecture
+Map user query → SQL query → BigQuery 4. 🏗️ Architecture
 Frontend (Next.js)
-    ↓
+↓
 Backend (Express API)
-    ↓
+↓
 Firestore (App Data)
-    ↓
+↓
 BigQuery (Analytics + ML)
-    ↓
-Cloud Run (Deployment)
-5. 📂 Project Structure
+↓
+Cloud Run (Deployment) 5. 📂 Project Structure
 root/
 │
 ├── frontend/
-│   ├── app/
-│   ├── components/
-│   ├── hooks/
-│   ├── services/
-│   ├── __tests__/
+│ ├── app/
+│ ├── components/
+│ ├── hooks/
+│ ├── services/
+│ ├── **tests**/
 │
 ├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── services/
-│   ├── middleware/
-│   ├── __tests__/
+│ ├── routes/
+│ ├── controllers/
+│ ├── services/
+│ ├── middleware/
+│ ├── **tests**/
 │
 ├── cloud/
-│   ├── bigquery/
-│   ├── ml_models/
+│ ├── bigquery/
+│ ├── ml_models/
 │
 ├── docker/
 │
-└── README.md
-6. 🔌 API DESIGN
+└── README.md 6. 🔌 API DESIGN
 Chat API
 POST /api/chat
 {
-  "message": "Explain election process"
+"message": "Explain election process"
 }
 NLP Query API
 POST /api/nlp-query
 {
-  "query": "Which region has highest turnout?"
+"query": "Which region has highest turnout?"
 }
 Analytics API
-GET /api/analytics
-7. 🧪 TESTING (MANDATORY)
+GET /api/analytics 7. 🧪 TESTING (MANDATORY)
 Framework
 Jest
 Backend Testing
@@ -135,38 +131,33 @@ Integration tests:
 API endpoints
 Example:
 describe("GET /api/timeline", () => {
-  it("should return timeline data", async () => {
-    const res = await request(app).get("/api/timeline");
-    expect(res.statusCode).toBe(200);
-  });
+it("should return timeline data", async () => {
+const res = await request(app).get("/api/timeline");
+expect(res.statusCode).toBe(200);
+});
 });
 Frontend Testing
 Component testing
 API mocking
 Example:
 test("renders chat UI", () => {
-  render(<Chat />);
-  expect(screen.getByText("Ask anything")).toBeInTheDocument();
-});
-8. ☁️ DEPLOYMENT
+render(<Chat />);
+expect(screen.getByText("Ask anything")).toBeInTheDocument();
+}); 8. ☁️ DEPLOYMENT
 Cloud Run
 Containerize frontend + backend
 Deploy using Docker
-gcloud run deploy electionguide
-9. 🎨 UI REQUIREMENTS
+gcloud run deploy electionguide 9. 🎨 UI REQUIREMENTS
 ChatGPT-like interface
 Dashboard with charts
 Timeline animations
-Mobile responsive
-10. 🔐 SECURITY
+Mobile responsive 10. 🔐 SECURITY
 No JWT
 Input validation
-Rate limiting (optional)
-11. ⚡ PERFORMANCE
+Rate limiting (optional) 11. ⚡ PERFORMANCE
 API < 500ms
 Lazy loading
-Caching (optional)
-12. 🧠 AI IDE INSTRUCTIONS
+Caching (optional) 12. 🧠 AI IDE INSTRUCTIONS
 
 Generate code with:
 
@@ -175,12 +166,10 @@ Clean separation (frontend/backend)
 TypeScript (frontend)
 Async/await
 Proper error handling
-Reusable components
-13. 🚀 BONUS (IF TIME)
+Reusable components 13. 🚀 BONUS (IF TIME)
 Voice assistant
 Multilingual support
-Real-time notifications
-14. 🏁 FINAL OUTPUT
+Real-time notifications 14. 🏁 FINAL OUTPUT
 Fully working fullstack app
 AI chatbot
 ML-powered analytics

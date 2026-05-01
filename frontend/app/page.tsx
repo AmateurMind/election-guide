@@ -6,7 +6,7 @@ import * as motion from "framer-motion/client";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-4 text-center">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -16,24 +16,34 @@ export default function Home() {
           <ShieldCheck className="mr-2 h-4 w-4" />
           Your trusted civic companion
         </div>
-        
+
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-          Understand elections with <span className="text-primary">AI clarity.</span>
+          Understand elections with{" "}
+          <span className="text-primary">AI clarity.</span>
         </h1>
-        
+
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          ElectionGuide AI helps you navigate the voting process, track key dates, and explore historical turnout data using advanced natural language search.
+          ElectionGuide AI helps you navigate the voting process, track key
+          dates, and explore historical turnout data using advanced natural
+          language search.
         </p>
-        
+
         <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
           <Link href="/chat">
-            <Button size="lg" className="h-12 px-8 rounded-full text-base bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button
+              size="lg"
+              className="h-12 px-8 rounded-full text-base bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
               <Bot className="mr-2 h-5 w-5" />
               Ask the AI Assistant
             </Button>
           </Link>
           <Link href="/guide">
-            <Button size="lg" variant="outline" className="h-12 px-8 rounded-full text-base border-primary text-primary hover:bg-primary/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="h-12 px-8 rounded-full text-base border-primary text-primary hover:bg-primary/10"
+            >
               <Map className="mr-2 h-5 w-5" />
               View Voting Guide
             </Button>
@@ -41,7 +51,7 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
@@ -52,23 +62,32 @@ export default function Home() {
             <Bot className="h-6 w-6" />
           </div>
           <h3 className="text-xl font-bold mb-2">Smart Assistant</h3>
-          <p className="text-muted-foreground">Ask questions in plain English and get instant, accurate answers about the voting process.</p>
+          <p className="text-muted-foreground">
+            Ask questions in plain English and get instant, accurate answers
+            about the voting process.
+          </p>
         </div>
-        
+
         <div className="bg-card p-6 rounded-2xl border border-border shadow-sm text-left">
           <div className="h-12 w-12 bg-accent/20 rounded-xl flex items-center justify-center mb-4 text-accent">
             <Map className="h-6 w-6" />
           </div>
           <h3 className="text-xl font-bold mb-2">Step-by-Step Guides</h3>
-          <p className="text-muted-foreground">Clear, actionable instructions from checking eligibility to casting your ballot.</p>
+          <p className="text-muted-foreground">
+            Clear, actionable instructions from checking eligibility to casting
+            your ballot.
+          </p>
         </div>
-        
+
         <div className="bg-card p-6 rounded-2xl border border-border shadow-sm text-left">
           <div className="h-12 w-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-4 text-secondary-foreground">
             <LineChart className="h-6 w-6" />
           </div>
           <h3 className="text-xl font-bold mb-2">ML Analytics</h3>
-          <p className="text-muted-foreground">Explore historical voter turnout trends powered by BigQuery Machine Learning.</p>
+          <p className="text-muted-foreground">
+            Explore historical voter turnout trends powered by BigQuery Machine
+            Learning.
+          </p>
         </div>
       </motion.div>
     </div>

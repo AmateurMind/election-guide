@@ -1,4 +1,4 @@
-const { getFirestore } = require('../services/firestore');
+const { getFirestore } = require("../services/firestore");
 
 /**
  * GET /api/guide
@@ -7,10 +7,7 @@ const { getFirestore } = require('../services/firestore');
 async function getGuide(req, res, next) {
   try {
     const db = getFirestore();
-    const snapshot = await db
-      .collection('guide')
-      .orderBy('step', 'asc')
-      .get();
+    const snapshot = await db.collection("guide").orderBy("step", "asc").get();
 
     let steps = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -20,7 +17,7 @@ async function getGuide(req, res, next) {
       steps = steps.filter(
         (s) =>
           s.title?.toLowerCase().includes(q) ||
-          s.description?.toLowerCase().includes(q)
+          s.description?.toLowerCase().includes(q),
       );
     }
 

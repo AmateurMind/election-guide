@@ -1,6 +1,6 @@
-const { runQuery } = require('../services/bigquery');
+const { runQuery } = require("../services/bigquery");
 
-const DATASET = process.env.BIGQUERY_DATASET || 'election_data';
+const DATASET = process.env.BIGQUERY_DATASET || "election_data";
 
 /**
  * GET /api/analytics
