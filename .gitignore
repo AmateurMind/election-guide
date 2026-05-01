@@ -1,0 +1,64 @@
+# ========================
+# Environment & Secrets
+# ========================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Firebase / GCP Service Account Keys — NEVER commit these
+*firebase-adminsdk*.json
+serviceAccountKey.json
+*-service-account.json
+gcp-credentials.json
+
+# ========================
+# Node
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================
+# Next.js
+# ========================
+frontend/.next/
+frontend/out/
+frontend/.vercel
+
+# ========================
+# Build outputs
+# ========================
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ========================
+# Testing
+# ========================
+coverage/
+.nyc_output/
+
+# ========================
+# Docker
+# ========================
+docker/secrets/
