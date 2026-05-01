@@ -17,7 +17,7 @@ export default function Home() {
           Your trusted civic companion
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+        <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight text-foreground">
           Understand elections with{" "}
           <span className="text-primary">AI clarity.</span>
         </h1>
@@ -61,7 +61,7 @@ export default function Home() {
           <div className="h-12 w-12 bg-primary/20 rounded-xl flex items-center justify-center mb-4 text-primary">
             <Bot className="h-6 w-6" />
           </div>
-          <h3 className="text-xl font-bold mb-2">Smart Assistant</h3>
+          <h3 className="text-xl font-heading font-bold mb-2">Smart Assistant</h3>
           <p className="text-muted-foreground">
             Ask questions in plain English and get instant, accurate answers
             about the voting process.
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="h-12 w-12 bg-accent/20 rounded-xl flex items-center justify-center mb-4 text-accent">
             <Map className="h-6 w-6" />
           </div>
-          <h3 className="text-xl font-bold mb-2">Step-by-Step Guides</h3>
+          <h3 className="text-xl font-heading font-bold mb-2">Step-by-Step Guides</h3>
           <p className="text-muted-foreground">
             Clear, actionable instructions from checking eligibility to casting
             your ballot.
@@ -83,7 +83,7 @@ export default function Home() {
           <div className="h-12 w-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-4 text-secondary-foreground">
             <LineChart className="h-6 w-6" />
           </div>
-          <h3 className="text-xl font-bold mb-2">ML Analytics</h3>
+          <h3 className="text-xl font-heading font-bold mb-2">ML Analytics</h3>
           <p className="text-muted-foreground">
             Explore historical voter turnout trends powered by BigQuery Machine
             Learning.
