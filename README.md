@@ -1,275 +1,155 @@
-# ElectionGuide AI 🗳️
+# ElectionGuide AI
 
-<div align="center">
-
-![ElectionGuide AI](https://img.shields.io/badge/ElectionGuide-AI-blue?style=for-the-badge&logo=google-cloud&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-20+-green?style=flat-square&logo=node.js)
 ![Next.js](https://img.shields.io/badge/Next.js-14+-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?style=flat-square&logo=typescript)
 ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Run-blue?style=flat-square&logo=google-cloud)
 
-**🤖 AI-Powered Election Education Platform**
+ElectionGuide AI is a full-stack election education platform with an AI chat assistant, an interactive timeline, a voting guide, and analytics powered by BigQuery and BigQuery ML.
 
-*Empowering citizens with intelligent election insights, interactive timelines, and natural language queries.*
+## Live URLs
 
-[🌐 Live Demo](https://electionguide-frontend-746853930624.us-central1.run.app) | [📚 API Documentation](https://electionguide-backend-746853930624.us-central1.run.app/health)
+| Service     | URL                                                                                                                                | Status      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| Frontend UI | [https://electionguide-frontend-746853930624.us-central1.run.app](https://electionguide-frontend-746853930624.us-central1.run.app) | 🟢 Deployed |
+| Backend API | [https://electionguide-backend-746853930624.us-central1.run.app](https://electionguide-backend-746853930624.us-central1.run.app)   | 🟢 Deployed |
 
----
+## Overview
 
-## ✨ Features
+The repository is split into a Next.js frontend and an Express backend:
 
-### 🎯 Core Capabilities
-- **AI Chat Assistant** 🤖 - Powered by Google Gemini for election Q&A
-- **Interactive Timeline** 📅 - Animated election process visualization
-- **Smart Voting Guide** 🧾 - Step-by-step registration and voting instructions
-- **ML Analytics Dashboard** 📊 - BigQuery ML-driven voter turnout predictions
-- **Natural Language Queries** 🗣️ - Ask questions in plain English
+- `frontend/` - Next.js App Router UI built with TypeScript, Tailwind CSS, shadcn/ui, Framer Motion, and Recharts.
+- `backend/` - Express API with Gemini, Firestore, BigQuery, and Natural Language API integrations.
+- `cloud/` - BigQuery schema, seed data, and ML SQL.
+- `docker/` - Dockerfiles for container-based deployment.
 
-### 🔧 Technical Highlights
-- **Real-time Data Processing** ⚡ - Live BigQuery analytics
-- **Secure API Design** 🔒 - Rate limiting, input validation, CORS
-- **Responsive Design** 📱 - Mobile-first with dark/light themes
-- **Performance Optimized** 🚀 - Lazy loading, caching, compression
-- **Accessibility Ready** ♿ - WCAG compliant components
+## Features
 
----
+- AI chat for election-related questions.
+- Interactive election timeline views.
+- Step-by-step voting guide content.
+- Analytics dashboards with turnout and regional trend data.
+- Natural-language query handling for data access.
 
-## 🚀 Quick Start
+## Prerequisites
 
-### Prerequisites
-- 🟢 Node.js 20+
-- ☁️ Google Cloud CLI authenticated
-- 🔥 Firebase project with service account key
+- Node.js 20 or newer.
+- npm.
+- A Google Cloud project with the required APIs enabled.
+- A Firebase service account JSON file for Firestore access.
 
-### Installation
+## Local Setup
 
-#### Backend API
+Run the backend and frontend in separate terminals.
+
+### Backend
+
 ```bash
 cd backend
-cp .env.example .env   # Configure your secrets
+copy .env.example .env
 npm install
-npm run dev           # Starts on http://localhost:4000
+npm run dev
 ```
 
-#### Frontend UI
+The backend starts on `http://localhost:4000` by default.
+
+### Frontend
+
+Create `frontend/.env.local` with the API URL, then install and start the app.
+
 ```bash
 cd frontend
-cp .env.example .env.local
 npm install
-npm run dev           # Starts on http://localhost:3000
+npm run dev
 ```
 
-### 🧪 Testing
+Example frontend environment value:
+
 ```bash
-# Backend tests
-cd backend && npm test
-
-# Frontend tests
-cd frontend && npm test
+NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
----
+The frontend starts on `http://localhost:3000` by default.
 
-## 🌐 Live URLs
+## Environment Variables
 
-| Service | URL | Status |
-|---------|-----|--------|
-| **Frontend UI** | [https://electionguide-frontend-746853930624.us-central1.run.app](https://electionguide-frontend-746853930624.us-central1.run.app) | 🟢 Deployed |
-| **Backend API** | [https://electionguide-backend-746853930624.us-central1.run.app](https://electionguide-backend-746853930624.us-central1.run.app) | 🟢 Deployed |
+### Backend
 
-### 📡 API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/chat` | POST | AI conversation endpoint |
-| `/api/timeline` | GET | Election timeline data |
-| `/api/guide` | GET | Voting guide steps |
-| `/api/analytics` | GET | ML-powered analytics |
-| `/api/nlp-query` | POST | Natural language to SQL |
-| `/health` | GET | Service health check |
-
----
-
-## 🏗️ Architecture
-
-```mermaid
-graph TD
-    A[User Interface] --> B[Next.js Frontend]
-    B --> C[Express Backend]
-    C --> D[Gemini AI]
-    C --> E[BigQuery ML]
-    C --> F[Natural Language API]
-    C --> G[Firestore DB]
-    D --> H[Google Cloud]
-    E --> H
-    F --> H
-    G --> H
-```
-
-### Tech Stack Breakdown
-
-#### Frontend 🖥️
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Animations**: Framer Motion
-- **Charts**: Recharts
-
-#### Backend 🔧
-- **Runtime**: Node.js 20
-- **Framework**: Express.js
-- **Testing**: Jest + Supertest
-- **Security**: Helmet, CORS, Rate Limiting
-
-#### Cloud & AI ☁️
-- **Hosting**: Google Cloud Run
-- **Database**: Firebase Firestore
-- **Analytics**: BigQuery + BigQuery ML
-- **AI**: Google Gemini API
-- **NLP**: Cloud Natural Language API
-
----
-
-## 📁 Project Structure
-
-```
-electionguide-ai/
-├── frontend/              # Next.js application
-│   ├── app/              # App Router pages
-│   ├── components/       # Reusable UI components
-│   ├── lib/              # Utilities & configs
-│   └── __tests__/        # Component tests
-├── backend/               # Express API server
-│   ├── src/
-│   │   ├── controllers/  # Business logic
-│   │   ├── routes/       # API endpoints
-│   │   ├── services/     # External integrations
-│   │   ├── middleware/   # Custom middleware
-│   │   └── __tests__/    # Unit tests
-│   └── package.json
-├── cloud/                 # Google Cloud configs
-│   ├── bigquery/         # SQL schemas & data
-│   └── ml_models/        # ML training scripts
-├── docker/                # Container configs
-└── README.md
-```
-
----
-
-## 🔧 Environment Configuration
-
-### Backend (.env)
 ```bash
 PORT=4000
-GEMINI_API_KEY=your_gemini_key
+GEMINI_API_KEY=your_key
 GOOGLE_APPLICATION_CREDENTIALS=./serviceAccountKey.json
-GCP_PROJECT_ID=election-495012
+GCP_PROJECT_ID=your_project_id
 BIGQUERY_DATASET=election_data
 ```
 
-### Frontend (.env.local)
+### Frontend
+
 ```bash
-NEXT_PUBLIC_API_URL=https://electionguide-backend-746853930624.us-central1.run.app
+NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
----
+## Scripts
 
-## 🚢 Deployment
+### Backend
 
-### Google Cloud Run
+- `npm run dev` - Start the Express server with nodemon.
+- `npm start` - Start the Express server in production mode.
+- `npm test` - Run backend tests with Jest.
+
+### Frontend
+
+- `npm run dev` - Start the Next.js dev server.
+- `npm run build` - Build the frontend for production.
+- `npm start` - Start the production frontend server.
+- `npm test` - Run frontend tests with Jest.
+
+## API Endpoints
+
+| Endpoint         | Method | Purpose                                                |
+| ---------------- | ------ | ------------------------------------------------------ |
+| `/api/chat`      | POST   | Chat with the election assistant                       |
+| `/api/timeline`  | GET    | Fetch timeline data                                    |
+| `/api/guide`     | GET    | Fetch voting guide content                             |
+| `/api/analytics` | GET    | Fetch analytics and ML-driven insights                 |
+| `/api/nlp-query` | POST   | Translate a natural-language query into a data request |
+| `/health`        | GET    | Health check                                           |
+
+## Testing
+
 ```bash
-# Backend deployment
-gcloud run deploy electionguide-backend \
-  --source ./backend \
-  --region us-central1 \
-  --allow-unauthenticated
-
-# Frontend deployment
-gcloud run deploy electionguide-frontend \
-  --source ./frontend \
-  --region us-central1 \
-  --allow-unauthenticated
+cd backend && npm test
+cd frontend && npm test
 ```
 
-### Docker Support
-Build and deploy using included Dockerfiles in the `docker/` directory.
+## Deployment
 
----
+The repo includes Dockerfiles in `docker/` for container-based deployment. For Google Cloud Run, deploy the backend and frontend separately using the corresponding source directories or container images.
 
-## 📊 Demo Screenshots
+## Project Structure
 
-### AI Chat Interface
-*Screenshot of conversational AI assistant*
+```text
+root/
+├── frontend/
+│   ├── app/
+│   ├── components/
+│   ├── lib/
+│   └── __tests__/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   └── services/
+│   └── __tests__/
+├── cloud/
+│   ├── bigquery/
+│   └── ml_models/
+├── docker/
+└── README.md
+```
 
-### Analytics Dashboard
-*Interactive charts showing voter turnout trends*
+## Notes
 
-### NLP Query Interface
-*Natural language to data visualization*
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow ESLint & Prettier standards
-- Write tests for new features
-- Update documentation
-- Ensure accessibility compliance
-
----
-
-## 📈 Performance Metrics
-
-- **API Response Time**: <500ms average
-- **Frontend Bundle Size**: Optimized with Next.js
-- **Test Coverage**: 90%+ across backend/frontend
-- **Accessibility Score**: WCAG 2.1 AA compliant
-
----
-
-## 🔒 Security
-
-- **Authentication**: Firebase Admin SDK
-- **Authorization**: Route-level permissions
-- **Data Validation**: Input sanitization & schema validation
-- **Rate Limiting**: 100 requests per 15 minutes
-- **HTTPS**: Enforced on all endpoints
-
----
-
-## 📚 Resources
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Google Cloud BigQuery](https://cloud.google.com/bigquery)
-- [Firebase Documentation](https://firebase.google.com/docs)
-- [Google Gemini API](https://ai.google.dev/docs)
-
----
-
-## 🙏 Acknowledgments
-
-Built with ❤️ using cutting-edge AI and cloud technologies to democratize election education.
-
----
-
-## 📄 License
-
-Licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Made with ❤️ by AI enthusiasts for civic engagement**
-
-⭐ Star this repo if you found it helpful!
-
-</div></content>
-<parameter name="filePath">F:\BuildWithAi2\README.md
+- The backend expects Google Cloud and Firebase credentials before API calls will work.
+- If you change the backend URL, update `NEXT_PUBLIC_API_URL` in `frontend/.env.local`.
