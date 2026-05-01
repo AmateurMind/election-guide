@@ -5,9 +5,9 @@
  * Populates the `timeline` and `guide` Firestore collections.
  */
 
-require("dotenv").config({ path: "../.env" });
-const admin = require("firebase-admin");
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const admin = require("firebase-admin");
 
 admin.initializeApp({
   credential: admin.credential.cert(

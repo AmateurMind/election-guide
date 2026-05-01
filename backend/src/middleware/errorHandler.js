@@ -19,10 +19,5 @@ function errorHandler(err, _req, res, _next) {
   res.status(status).json({ error: message });
 }
 
-  res.status(status).json({ error: message });
-}
-
-  res.status(status).json({ error: message });
-}
 
 module.exports = errorHandler;
